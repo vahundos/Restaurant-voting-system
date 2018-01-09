@@ -8,5 +8,18 @@
     <artifactId>restaurant-voting-system</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <!-- DB -->
+        <hsqldb.version>2.4.0</hsqldb.version>
+    </properties>
+
+    <dependencies>
+        <!-- DB -->
+        <dependency>
+            <groupId>org.hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>${hsqldb.version}</version>
+        </dependency>
+    </dependencies>
 
 </project>
