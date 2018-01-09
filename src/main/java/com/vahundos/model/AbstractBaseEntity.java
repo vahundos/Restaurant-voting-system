@@ -1,4 +1,4 @@
-package com.vahundos.repository;
+package com.vahundos.model;
 
 import org.hibernate.Hibernate;
 import org.springframework.data.domain.Persistable;

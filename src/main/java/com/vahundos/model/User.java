@@ -1,4 +1,4 @@
-package com.vahundos.repository;
+package com.vahundos.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
