@@ -21,6 +21,7 @@
 
         <!-- Hibernate -->
         <hibernate.version>5.2.12.Final</hibernate.version>
+        <hibernate-validator.version>6.0.5.Final</hibernate-validator.version>
 
         <!-- Logging -->
         <logback.version>1.2.3</logback.version>
@@ -75,6 +76,11 @@
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
             <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
         </dependency>
 
         <!-- Logging with SLF4J & LogBack -->
