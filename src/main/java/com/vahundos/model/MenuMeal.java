@@ -22,7 +22,7 @@ public class MenuMeal {
         this.meal = meal;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
