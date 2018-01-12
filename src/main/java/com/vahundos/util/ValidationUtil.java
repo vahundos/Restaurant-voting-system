@@ -2,6 +2,7 @@ package com.vahundos.util;
 
 
 import com.vahundos.model.AbstractBaseEntity;
+import com.vahundos.util.exception.NotFoundException;
 
 public class ValidationUtil {
 
@@ -23,7 +24,7 @@ public class ValidationUtil {
 
     public static void checkNotFound(boolean found, String msg) {
         if (!found) {
-            throw new IllegalArgumentException("Not found entity with " + msg);
+            throw new NotFoundException("Not found entity with " + msg);
         }
     }
 

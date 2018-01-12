@@ -1,4 +1,4 @@
-package com.vahundos.repository.user;
+package com.vahundos.repository;
 
 import com.vahundos.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
