@@ -1,4 +1,4 @@
-package com.vahundos.repository.meal;
+package com.vahundos.repository;
 
 import com.vahundos.model.Meal;
 import org.springframework.data.domain.Sort;

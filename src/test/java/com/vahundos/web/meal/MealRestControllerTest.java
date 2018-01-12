@@ -2,7 +2,7 @@ package com.vahundos.web.meal;
 
 import com.vahundos.TestUtil;
 import com.vahundos.model.Meal;
-import com.vahundos.repository.meal.MealRepository;
+import com.vahundos.service.meal.MealService;
 import com.vahundos.web.AbstractControllerTest;
 import com.vahundos.web.json.JsonUtil;
 import org.junit.Test;
@@ -13,7 +13,8 @@ import org.springframework.test.web.servlet.ResultActions;
 import java.util.Arrays;
 
 import static com.vahundos.MealTestData.*;
-import static com.vahundos.TestUtil.*;
+import static com.vahundos.TestUtil.assertMatch;
+import static com.vahundos.TestUtil.contentJson;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -24,7 +25,7 @@ public class MealRestControllerTest extends AbstractControllerTest {
     private static final String REST_URL = MealRestController.REST_URL + "/";
 
     @Autowired
-    private MealRepository repository;
+    private MealService service;
 
     @Test
     public void testGet() throws Exception {
@@ -50,7 +51,7 @@ public class MealRestControllerTest extends AbstractControllerTest {
                 .andExpect(status().isOk())
                 .andDo(print());
 
-        assertMatch(repository.getAll(), Arrays.asList(MEAL2, MEAL6, MEAL5, MEAL4, MEAL3));
+        assertMatch(service.getAll(), Arrays.asList(MEAL2, MEAL6, MEAL5, MEAL4, MEAL3));
     }
 
     @Test
@@ -63,7 +64,7 @@ public class MealRestControllerTest extends AbstractControllerTest {
                 .andExpect(status().isOk())
                 .andDo(print());
 
-        assertMatch(repository.get(MEAL1_ID), updated);
+        assertMatch(service.get(MEAL1_ID), updated);
     }
 
     @Test
@@ -77,6 +78,6 @@ public class MealRestControllerTest extends AbstractControllerTest {
         created.setId(actual.getId());
 
         assertMatch(actual, created);
-        assertMatch(repository.getAll(), Arrays.asList(created, MEAL2, MEAL6, MEAL5, MEAL4, MEAL1, MEAL3));
+        assertMatch(service.getAll(), Arrays.asList(created, MEAL2, MEAL6, MEAL5, MEAL4, MEAL1, MEAL3));
     }
 }
