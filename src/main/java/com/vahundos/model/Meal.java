@@ -1,10 +1,13 @@
 package com.vahundos.model;
 
+import org.hibernate.annotations.BatchSize;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "meals")
+@BatchSize(size = 20)
 public class Meal extends AbstractNamedEntity {
     public Meal() {
     }
