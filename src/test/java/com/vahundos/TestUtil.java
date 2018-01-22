@@ -5,6 +5,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.ResultMatcher;
 
 import java.io.UnsupportedEncodingException;
+import java.util.List;
 
 import static com.vahundos.web.json.JsonUtil.writeValue;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -17,6 +18,10 @@ public class TestUtil {
 
     public static <T> void assertMatch(Iterable<T> actual, Iterable<T> expected, String... ignoredFields) {
         assertThat(actual).usingElementComparatorIgnoringFields(ignoredFields).isEqualTo(expected);
+    }
+
+    public static <T> void assertMatchInAnyOrder(Iterable<T> actual, T... expected) {
+        assertThat(actual).containsExactlyInAnyOrder(expected);
     }
 
     public static String getContent(ResultActions action) throws UnsupportedEncodingException {

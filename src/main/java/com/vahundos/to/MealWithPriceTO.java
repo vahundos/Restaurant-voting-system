@@ -1,5 +1,7 @@
 package com.vahundos.to;
 
+import java.util.Objects;
+
 public class MealWithPriceTO extends MealTO {
     private final int price;
 
