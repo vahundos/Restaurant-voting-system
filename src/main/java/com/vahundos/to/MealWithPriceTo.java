@@ -2,10 +2,10 @@ package com.vahundos.to;
 
 import java.util.Objects;
 
-public class MealWithPriceTO extends MealTO {
+public class MealWithPriceTo extends MealTo {
     private final int price;
 
-    public MealWithPriceTO(int id, String name, int price) {
+    public MealWithPriceTo(int id, String name, int price) {
         super(id, name);
         this.price = price;
     }
@@ -16,7 +16,7 @@ public class MealWithPriceTO extends MealTO {
 
     @Override
     public String toString() {
-        return "MealWithPriceTO{" +
+        return "MealWithPriceTo{" +
                 "price=" + price +
                 "} " + super.toString();
     }

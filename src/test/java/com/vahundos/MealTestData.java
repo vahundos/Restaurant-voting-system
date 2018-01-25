@@ -1,7 +1,6 @@
 package com.vahundos;
 
 import com.vahundos.model.Meal;
-import com.vahundos.to.MealTO;
 
 import static com.vahundos.model.AbstractBaseEntity.START_SEQ;
 

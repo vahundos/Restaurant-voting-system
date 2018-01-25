@@ -4,15 +4,15 @@ import com.vahundos.model.Meal;
 
 import java.util.Objects;
 
-public class MealTO {
+public class MealTo {
     private final int id;
     private final String name;
 
-    public MealTO(Meal meal) {
+    public MealTo(Meal meal) {
         this(meal.getId(), meal.getName());
     }
 
-    public MealTO(int id, String name) {
+    public MealTo(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -29,8 +29,8 @@ public class MealTO {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        MealTO mealTO = (MealTO) o;
-        return id == mealTO.id && Objects.equals(name, mealTO.name);
+        MealTo mealTo = (MealTo) o;
+        return id == mealTo.id && Objects.equals(name, mealTo.name);
     }
 
     @Override

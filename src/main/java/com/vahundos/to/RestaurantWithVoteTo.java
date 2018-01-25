@@ -1,10 +1,10 @@
 package com.vahundos.to;
 
-public class RestaurantWithVoteTO extends RestaurantTO {
+public class RestaurantWithVoteTo extends RestaurantTo {
 
     private final int voteCount;
 
-    public RestaurantWithVoteTO(int id, String name, int voteCount) {
+    public RestaurantWithVoteTo(int id, String name, int voteCount) {
         super(id, name);
         this.voteCount = voteCount;;
     }
@@ -15,7 +15,7 @@ public class RestaurantWithVoteTO extends RestaurantTO {
 
     @Override
     public String toString() {
-        return "RestaurantWithVoteTO{" +
+        return "RestaurantWithVoteTo{" +
                 "voteCount=" + voteCount +
                 "} " + super.toString();
     }

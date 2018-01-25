@@ -1,10 +1,10 @@
 package com.vahundos.to;
 
-public class RestaurantTO {
+public class RestaurantTo {
     private final int id;
     private final String name;
 
-    public RestaurantTO(int id, String name) {
+    public RestaurantTo(int id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -19,7 +19,7 @@ public class RestaurantTO {
 
     @Override
     public String toString() {
-        return "RestaurantTO{" +
+        return "RestaurantTo{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 '}';
