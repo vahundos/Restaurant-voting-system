@@ -1,8 +1,11 @@
-package com.vahundos.to;
+package com.vahundos.to.restaurant;
 
 public class RestaurantWithVoteTo extends RestaurantTo {
 
-    private final int voteCount;
+    private int voteCount;
+
+    public RestaurantWithVoteTo() {
+    }
 
     public RestaurantWithVoteTo(int id, String name, int voteCount) {
         super(id, name);

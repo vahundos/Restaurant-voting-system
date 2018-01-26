@@ -1,14 +1,22 @@
-package com.vahundos.to;
+package com.vahundos.to.restaurant;
+
+import com.vahundos.to.meal.MealWithPriceTo;
 
 import java.util.Collections;
 import java.util.List;
 
 public class RestaurantWithMenuMealsTo extends RestaurantTo {
 
-    private final List<MealWithPriceTo> meals;
+    private Integer menuId;
 
-    public RestaurantWithMenuMealsTo(int id, String name, List<MealWithPriceTo> meals) {
+    private List<MealWithPriceTo> meals;
+
+    public RestaurantWithMenuMealsTo() {
+    }
+
+    public RestaurantWithMenuMealsTo(int id, String name, Integer menuId, List<MealWithPriceTo> meals) {
         super(id, name);
+        this.menuId = menuId;
         this.meals = Collections.unmodifiableList(meals);
     }
 
@@ -19,7 +27,8 @@ public class RestaurantWithMenuMealsTo extends RestaurantTo {
     @Override
     public String toString() {
         return "RestaurantWithMenuMealsTo{" +
-                "meals=" + meals +
+                "menuId=" + menuId +
+                ", meals=" + meals +
                 "} " + super.toString();
     }
 }

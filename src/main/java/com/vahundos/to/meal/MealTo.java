@@ -1,24 +1,23 @@
-package com.vahundos.to;
+package com.vahundos.to.meal;
 
 import com.vahundos.model.Meal;
+import com.vahundos.to.BaseTo;
 
 import java.util.Objects;
 
-public class MealTo {
-    private final int id;
-    private final String name;
+public class MealTo extends BaseTo {
+    private String name;
+
+    public MealTo() {
+    }
 
     public MealTo(Meal meal) {
         this(meal.getId(), meal.getName());
     }
 
     public MealTo(int id, String name) {
-        this.id = id;
+        super(id);
         this.name = name;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public String getName() {
@@ -30,19 +29,18 @@ public class MealTo {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MealTo mealTo = (MealTo) o;
-        return id == mealTo.id && Objects.equals(name, mealTo.name);
+        return Objects.equals(name, mealTo.name);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name);
+        return Objects.hash(name);
     }
 
     @Override
     public String toString() {
-        return "MealTO{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return "MealTo{" +
+                "name='" + name + '\'' +
+                "} " + super.toString();
     }
 }

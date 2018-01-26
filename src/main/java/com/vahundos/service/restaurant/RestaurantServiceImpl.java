@@ -2,9 +2,9 @@ package com.vahundos.service.restaurant;
 
 import com.vahundos.model.Restaurant;
 import com.vahundos.repository.CrudRestaurantRepository;
-import com.vahundos.to.RestaurantTo;
-import com.vahundos.to.RestaurantWithMenuMealsTo;
-import com.vahundos.to.RestaurantWithVoteTo;
+import com.vahundos.to.restaurant.RestaurantTo;
+import com.vahundos.to.restaurant.RestaurantWithMenuMealsTo;
+import com.vahundos.to.restaurant.RestaurantWithVoteTo;
 import com.vahundos.util.RestaurantsUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;

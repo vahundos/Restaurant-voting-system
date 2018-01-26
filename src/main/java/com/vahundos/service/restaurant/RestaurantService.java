@@ -1,9 +1,9 @@
 package com.vahundos.service.restaurant;
 
 import com.vahundos.model.Restaurant;
-import com.vahundos.to.RestaurantTo;
-import com.vahundos.to.RestaurantWithMenuMealsTo;
-import com.vahundos.to.RestaurantWithVoteTo;
+import com.vahundos.to.restaurant.RestaurantTo;
+import com.vahundos.to.restaurant.RestaurantWithMenuMealsTo;
+import com.vahundos.to.restaurant.RestaurantWithVoteTo;
 
 import java.time.LocalDate;
 import java.util.List;

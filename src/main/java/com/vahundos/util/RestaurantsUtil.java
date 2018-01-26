@@ -2,9 +2,10 @@ package com.vahundos.util;
 
 import com.vahundos.model.Menu;
 import com.vahundos.model.Restaurant;
-import com.vahundos.to.*;
-import com.vahundos.to.RestaurantWithMenuMealsTo;
-import com.vahundos.to.RestaurantWithVoteTo;
+import com.vahundos.to.restaurant.RestaurantTo;
+import com.vahundos.to.restaurant.RestaurantWithMenuMealsTo;
+import com.vahundos.to.restaurant.RestaurantWithVoteTo;
+import com.vahundos.to.meal.MealWithPriceTo;
 
 import java.util.List;
 import java.util.Set;
@@ -22,11 +23,19 @@ public class RestaurantsUtil {
     }
 
     public static RestaurantWithMenuMealsTo createFromEntityWithMeals(Restaurant restaurant) {
+        int menusSize = restaurant.getMenus().size();
+        Integer menuId = null;
+        if (menusSize == 1) {
+            Menu menu = restaurant.getMenus().iterator().next();
+            menuId = menu.getId();
+        } else if (menusSize > 1) {
+            throw new IllegalArgumentException(restaurant + " should contain only one menu");
+        }
         List<MealWithPriceTo> mealList = restaurant.getMenus().stream()
-                .flatMap(menu -> menu.getMenuMeals().stream())
-                .map(menuMeal -> new MealWithPriceTo(menuMeal.getMeal().getId(), menuMeal.getMeal().getName(), menuMeal.getPrice()))
+                .flatMap(m -> m.getMenuMeals().stream())
+                .map(m -> new MealWithPriceTo(m.getMeal().getId(), m.getMeal().getName(), m.getPrice()))
                 .collect(Collectors.toList());
-        return new RestaurantWithMenuMealsTo(restaurant.getId(), restaurant.getName(), mealList);
+        return new RestaurantWithMenuMealsTo(restaurant.getId(), restaurant.getName(), menuId, mealList);
     }
 
     public static List<RestaurantWithMenuMealsTo> createFromEntityWithMeals(List<Restaurant> restaurant) {

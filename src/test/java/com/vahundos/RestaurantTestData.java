@@ -1,9 +1,9 @@
 package com.vahundos;
 
 import com.vahundos.model.Restaurant;
-import com.vahundos.to.MealWithPriceTo;
-import com.vahundos.to.RestaurantTo;
-import com.vahundos.to.RestaurantWithVoteTo;
+import com.vahundos.to.meal.MealWithPriceTo;
+import com.vahundos.to.restaurant.RestaurantTo;
+import com.vahundos.to.restaurant.RestaurantWithVoteTo;
 
 import java.time.LocalDate;
 
