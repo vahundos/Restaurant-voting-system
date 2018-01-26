@@ -1,10 +1,8 @@
-package com.vahundos.web.meal;
+package com.vahundos.web;
 
 import com.vahundos.TestUtil;
 import com.vahundos.model.Meal;
 import com.vahundos.service.meal.MealService;
-import com.vahundos.web.AbstractControllerTest;
-import com.vahundos.web.MealRestController;
 import com.vahundos.web.json.JsonUtil;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

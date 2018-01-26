@@ -6,7 +6,7 @@ import com.vahundos.to.menu.MenuTo;
 import java.time.LocalDate;
 
 public interface MenuService {
-    void create(MenuTo menu);
+    Menu create(MenuTo menu);
 
     void update(MenuTo menu);
 
