@@ -7,8 +7,6 @@ public interface UserService {
 
     User create(User user);
 
-    void update(User user);
-
     User get(int id) throws NotFoundException;
 
     User getByEmail(String email) throws NotFoundException;
