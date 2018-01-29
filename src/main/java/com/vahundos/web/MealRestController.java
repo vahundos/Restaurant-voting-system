@@ -16,7 +16,7 @@ import static com.vahundos.util.ValidationUtil.assureIdConsistent;
 @RestController
 @RequestMapping(value = MealRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class MealRestController {
-    public static final String REST_URL = "/rest/meal";
+    public static final String REST_URL = "/rest/admin/meal";
 
     @Autowired
     private MealService service;
