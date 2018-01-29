@@ -8,8 +8,10 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import static com.vahundos.MenuTestData.*;
+import static com.vahundos.MenuTestData.getForCreation;
+import static com.vahundos.MenuTestData.getForUpdating;
 import static com.vahundos.RestaurantTestData.*;
-import static com.vahundos.TestUtil.assertMatch;
+import static com.vahundos.TestUtil.*;
 
 public class MenuServiceTest extends AbstractServiceTest {
 
@@ -27,7 +29,7 @@ public class MenuServiceTest extends AbstractServiceTest {
         RestaurantWithMenuMealsTo restaurant = restaurantService.getOneWithMenuOnDate(RESTAURANT_ID3, DATE);
 
         assertMatch(restaurant.getMenuId(), menuTo.getId());
-        assertMatch(restaurant.getMeals(), menuTo.getMeals());
+        assertMatchInAnyOrder(restaurant.getMeals(), getMealArrayFromCollection(menuTo.getMeals()));
     }
 
     @Test
@@ -39,7 +41,7 @@ public class MenuServiceTest extends AbstractServiceTest {
 
         assertMatch(restaurant.getId(), menuTo.getRestaurantId());
         assertMatch(restaurant.getMenuId(), menuTo.getId());
-        assertMatch(restaurant.getMeals(), menuTo.getMeals());
+        assertMatchInAnyOrder(restaurant.getMeals(), getMealArrayFromCollection(menuTo.getMeals()));
     }
 
     @Test

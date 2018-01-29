@@ -1,5 +1,6 @@
 package com.vahundos.service.restaurant;
 
+import com.vahundos.model.Restaurant;
 import com.vahundos.service.AbstractServiceTest;
 import com.vahundos.to.restaurant.RestaurantTo;
 import com.vahundos.to.restaurant.RestaurantWithMenuMealsTo;
@@ -21,7 +22,18 @@ public class RestaurantServiceTest extends AbstractServiceTest {
     private RestaurantService service;
 
     @Test
-    public void testSave() {
+    public void testCreate() {
+        Restaurant expected = getForCreation();
+        Restaurant actual = service.create(expected);
+        expected.setId(actual.getId());
+        assertMatch(actual, expected);
+    }
+
+    @Test
+    public void testUpdate() {
+        Restaurant expected = getForUpdating();
+        service.update(expected);
+        assertMatch(service.get(expected.getId()), expected);
     }
 
     @Test

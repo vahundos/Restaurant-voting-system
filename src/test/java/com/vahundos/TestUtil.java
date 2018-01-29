@@ -1,11 +1,12 @@
 package com.vahundos;
 
+import com.vahundos.to.meal.MealWithPriceTo;
 import com.vahundos.web.json.JsonUtil;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.ResultMatcher;
 
 import java.io.UnsupportedEncodingException;
-import java.util.List;
+import java.util.Collection;
 
 import static com.vahundos.web.json.JsonUtil.writeValue;
 import static org.assertj.core.api.Assertions.assertThat;
@@ -43,5 +44,9 @@ public class TestUtil {
 
     public static <T> ResultMatcher contentJsonArray(T... expected) {
         return contentJson(expected);
+    }
+
+    public static MealWithPriceTo[] getMealArrayFromCollection(Collection<MealWithPriceTo> collection) {
+        return collection.toArray(new MealWithPriceTo[collection.size()]);
     }
 }

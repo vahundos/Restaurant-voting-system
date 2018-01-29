@@ -8,9 +8,7 @@ import com.vahundos.to.restaurant.RestaurantWithVoteTo;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-import static com.vahundos.MealTestData.MEAL1;
-import static com.vahundos.MealTestData.MEAL2;
-import static com.vahundos.MealTestData.MEAL5;
+import static com.vahundos.MealTestData.*;
 import static com.vahundos.model.AbstractBaseEntity.START_SEQ;
 
 public class RestaurantTestData {
@@ -21,6 +19,14 @@ public class RestaurantTestData {
     public static final Restaurant RESTAURANT1 = new Restaurant(RESTAURANT_ID1, "Морской");
     public static final Restaurant RESTAURANT2 = new Restaurant(RESTAURANT_ID2, "Китайский");
     public static final Restaurant RESTAURANT3 = new Restaurant(RESTAURANT_ID3, "Французкий");
+
+    public static Restaurant getForCreation() {
+        return new Restaurant("new_restaurant");
+    }
+
+    public static Restaurant getForUpdating() {
+        return new Restaurant(RESTAURANT_ID1, "new_restaurant_name");
+    }
 
     public static final RestaurantTo RESTAURANT1_TO = new RestaurantTo(RESTAURANT_ID1, "Морской");
     public static final RestaurantTo RESTAURANT2_TO = new RestaurantTo(RESTAURANT_ID2, "Китайский");
