@@ -1,5 +1,6 @@
 package com.vahundos.service;
 
+import com.vahundos.repository.JpaUtil;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
@@ -24,8 +25,12 @@ public abstract class AbstractServiceTest {
     @Autowired
     private CacheManager cacheManager;
 
+    @Autowired
+    protected JpaUtil jpaUtil;
+
     @Before
     public void setUp() throws Exception {
         cacheManager.getCache("restaurantsWithMenu").clear();
+        jpaUtil.clear2ndLevelHibernateCache();
     }
 }
