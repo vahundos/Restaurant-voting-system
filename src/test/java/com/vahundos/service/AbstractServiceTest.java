@@ -1,8 +1,11 @@
 package com.vahundos.service;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.CacheManager;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.jdbc.Sql;
 import org.springframework.test.context.jdbc.SqlConfig;
@@ -17,4 +20,12 @@ public abstract class AbstractServiceTest {
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
+
+    @Autowired
+    private CacheManager cacheManager;
+
+    @Before
+    public void setUp() throws Exception {
+        cacheManager.getCache("restaurantsWithMenu").clear();
+    }
 }
