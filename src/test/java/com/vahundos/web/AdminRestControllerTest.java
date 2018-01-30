@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import static com.vahundos.RestaurantTestData.DATE;
 import static com.vahundos.RestaurantTestData.RESTAURANT_ID3;
 import static com.vahundos.TestUtil.*;
+import static com.vahundos.UserTestData.ADMIN;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -33,7 +34,8 @@ public class AdminRestControllerTest extends AbstractControllerTest {
     public void testUpdate() throws Exception {
         Restaurant expected = RestaurantTestData.getForUpdating();
         mockMvc.perform(put(REST_URL + expected.getId()).contentType(MediaType.APPLICATION_JSON)
-                .content(JsonUtil.writeValue(expected)))
+                .content(JsonUtil.writeValue(expected))
+                .with(userHttpBasic(ADMIN)))
                 .andExpect(status().isOk())
                 .andDo(print());
 
@@ -44,7 +46,8 @@ public class AdminRestControllerTest extends AbstractControllerTest {
     public void testCreateWithLocation() throws Exception {
         Restaurant expected = RestaurantTestData.getForCreation();
         ResultActions resultActions = mockMvc.perform(post(REST_URL).contentType(MediaType.APPLICATION_JSON)
-                .content(JsonUtil.writeValue(expected)))
+                .content(JsonUtil.writeValue(expected))
+                .with(userHttpBasic(ADMIN)))
                 .andExpect(status().isCreated())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andDo(print());
@@ -58,7 +61,8 @@ public class AdminRestControllerTest extends AbstractControllerTest {
     public void testCreateMenu() throws Exception {
         MenuTo expected = MenuTestData.getForCreation(DATE, RESTAURANT_ID3);
         mockMvc.perform(post(REST_URL + RESTAURANT_ID3 + "/menu").contentType(MediaType.APPLICATION_JSON)
-                .content(JsonUtil.writeValue(expected)))
+                .content(JsonUtil.writeValue(expected))
+                .with(userHttpBasic(ADMIN)))
                 .andExpect(status().isOk())
                 .andDo(print());
 
@@ -70,7 +74,8 @@ public class AdminRestControllerTest extends AbstractControllerTest {
     public void testUpdateMenu() throws Exception {
         MenuTo expected = MenuTestData.getForUpdating(RESTAURANT_ID3);
         mockMvc.perform(put(REST_URL + RESTAURANT_ID3 + "/menu").contentType(MediaType.APPLICATION_JSON)
-                .content(JsonUtil.writeValue(expected)))
+                .content(JsonUtil.writeValue(expected))
+                .with(userHttpBasic(ADMIN)))
                 .andExpect(status().isOk())
                 .andDo(print());
 

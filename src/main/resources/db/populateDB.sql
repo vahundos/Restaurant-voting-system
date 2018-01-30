@@ -6,10 +6,10 @@ DELETE FROM USERS;
 ALTER SEQUENCE global_seq RESTART WITH 100000;
 
 INSERT INTO USERS (NAME, EMAIL, PASSWORD, PRIVILEGED) VALUES
-  ('Petr_admin', 'petr@gmail.com', 'petr_pass', TRUE),        -- 100000
-  ('Ivan_user', 'ivan@mail.ru', 'ivan_pass', FALSE),          -- 100001
-  ('Dmitriy_user', 'dmitriy@mail.ru', 'dmitriy_pass', FALSE), -- 100002
-  ('Vasya_user', 'vasya@gmail.com', 'vasya_pass', FALSE);     -- 100003
+  ('Petr_admin', 'petr@gmail.com', '{noop}petr_pass', TRUE),        -- 100000
+  ('Ivan_user', 'ivan@mail.ru', '{noop}ivan_pass', FALSE),          -- 100001
+  ('Dmitriy_user', 'dmitriy@mail.ru', '{noop}dmitriy_pass', FALSE), -- 100002
+  ('Vasya_user', 'vasya@gmail.com', '{noop}vasya_pass', FALSE);     -- 100003
 
 INSERT INTO MEALS (NAME) VALUES
   ('хлеб'),   -- 100004

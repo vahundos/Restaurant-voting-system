@@ -12,8 +12,9 @@ import org.springframework.test.web.servlet.ResultActions;
 import java.util.Arrays;
 
 import static com.vahundos.MealTestData.*;
-import static com.vahundos.TestUtil.assertMatch;
-import static com.vahundos.TestUtil.contentJson;
+import static com.vahundos.TestUtil.*;
+import static com.vahundos.UserTestData.ADMIN;
+import static com.vahundos.UserTestData.USER1;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -28,7 +29,7 @@ public class MealRestControllerTest extends AbstractControllerTest {
 
     @Test
     public void testGet() throws Exception {
-        mockMvc.perform(get(REST_URL + MEAL1_ID))
+        mockMvc.perform(get(REST_URL + MEAL1_ID).with(userHttpBasic(ADMIN)))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -36,8 +37,22 @@ public class MealRestControllerTest extends AbstractControllerTest {
     }
 
     @Test
+    public void testGetUnauth() throws Exception {
+        mockMvc.perform((get(REST_URL + MEAL1_ID)))
+                .andExpect(status().isUnauthorized())
+                .andDo(print());
+    }
+
+    @Test
+    public void testGetForbidden() throws Exception {
+        mockMvc.perform((get(REST_URL + MEAL1_ID)).with(userHttpBasic(USER1)))
+                .andExpect(status().isForbidden())
+                .andDo(print());
+    }
+
+    @Test
     public void testGetAll() throws Exception {
-        mockMvc.perform(get(REST_URL))
+        mockMvc.perform(get(REST_URL).with(userHttpBasic(ADMIN)))
                 .andExpect(status().isOk())
                 .andDo(print())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
@@ -46,7 +61,7 @@ public class MealRestControllerTest extends AbstractControllerTest {
 
     @Test
     public void testDelete() throws Exception {
-        mockMvc.perform(delete(REST_URL + MEAL1_ID))
+        mockMvc.perform(delete(REST_URL + MEAL1_ID).with(userHttpBasic(ADMIN)))
                 .andExpect(status().isOk())
                 .andDo(print());
 
@@ -59,7 +74,8 @@ public class MealRestControllerTest extends AbstractControllerTest {
         updated.setName("новое имя еды");
 
         mockMvc.perform(put(REST_URL + MEAL1_ID).contentType(MediaType.APPLICATION_JSON)
-                .content(JsonUtil.writeValue(updated)))
+                .content(JsonUtil.writeValue(updated))
+                .with(userHttpBasic(ADMIN)))
                 .andExpect(status().isOk())
                 .andDo(print());
 
@@ -71,7 +87,8 @@ public class MealRestControllerTest extends AbstractControllerTest {
         Meal created = new Meal("ананас");
         ResultActions action = mockMvc.perform(post(REST_URL)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(JsonUtil.writeValue(created)));
+                .content(JsonUtil.writeValue(created))
+                .with(userHttpBasic(ADMIN)));
 
         Meal actual = TestUtil.readFromJson(action, Meal.class);
         created.setId(actual.getId());
