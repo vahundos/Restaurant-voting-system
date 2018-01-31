@@ -24,7 +24,7 @@ import static com.vahundos.util.exception.ErrorType.*;
 public class ExceptionInfoHandler {
     private static Logger log = LoggerFactory.getLogger(ExceptionInfoHandler.class);
 
-    @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+    @ResponseStatus(HttpStatus.CONFLICT)
     @ExceptionHandler(VotingException.class)
     public ErrorInfo votingError(HttpServletRequest req, VotingException e) {
         return logAndGetErrorInfo(req, e, false, DATA_ERROR);
