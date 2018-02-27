@@ -24,8 +24,12 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     private static final Sort SORT_NAME_ASC = Sort.by("name");
 
+    private final CrudRestaurantRepository repository;
+
     @Autowired
-    private CrudRestaurantRepository repository;
+    public RestaurantServiceImpl(CrudRestaurantRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     @CacheEvict(value = "restaurantsWithMenu", allEntries = true)

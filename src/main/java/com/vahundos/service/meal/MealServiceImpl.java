@@ -2,7 +2,6 @@ package com.vahundos.service.meal;
 
 import com.vahundos.model.Meal;
 import com.vahundos.repository.CrudMealRepository;
-import com.vahundos.util.ValidationUtil;
 import com.vahundos.util.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -18,8 +17,12 @@ public class MealServiceImpl implements MealService {
 
     private static final Sort SORT_NAME_ASC = Sort.by("name");
 
+    private final CrudMealRepository repository;
+
     @Autowired
-    private CrudMealRepository repository;
+    public MealServiceImpl(CrudMealRepository repository) {
+        this.repository = repository;
+    }
 
     @Override
     public Meal create(Meal meal) {

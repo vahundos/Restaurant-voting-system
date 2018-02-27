@@ -19,11 +19,15 @@ import static com.vahundos.util.ValidationUtil.checkNotFoundWithId;
 @Service("userService")
 public class UserServiceImpl implements UserService, UserDetailsService {
 
-    @Autowired
-    private CrudUserRepository repository;
+    private final CrudUserRepository repository;
+
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    public UserServiceImpl(CrudUserRepository repository, PasswordEncoder passwordEncoder) {
+        this.repository = repository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     @Override
     public User create(User user) {

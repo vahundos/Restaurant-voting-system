@@ -5,6 +5,7 @@ import com.vahundos.service.meal.MealService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
@@ -13,13 +14,18 @@ import java.util.List;
 
 import static com.vahundos.util.ValidationUtil.assureIdConsistent;
 
+@PreAuthorize("hasRole('ROLE_ADMIN')")
 @RestController
 @RequestMapping(value = MealRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
 public class MealRestController {
-    public static final String REST_URL = "/rest/admin/meal";
+    public static final String REST_URL = "/rest/meal";
+
+    private final MealService service;
 
     @Autowired
-    private MealService service;
+    public MealRestController(MealService service) {
+        this.service = service;
+    }
 
     @GetMapping("/{id}")
     public Meal get(@PathVariable("id") int id) {

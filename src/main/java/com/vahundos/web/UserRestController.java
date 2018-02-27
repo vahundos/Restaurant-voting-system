@@ -14,8 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class UserRestController {
     public static final String REST_URL = "/rest/user";
 
+    private final UserService service;
+
     @Autowired
-    private UserService service;
+    public UserRestController(UserService service) {
+        this.service = service;
+    }
 
     @PostMapping(path = "/registration", consumes = MediaType.APPLICATION_JSON_VALUE)
     public void create(@RequestBody User user) {

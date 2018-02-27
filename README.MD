@@ -34,6 +34,7 @@ Each restaurant provides new menu each day.
 | `200 OK` | The request completed successfully |
 | `201 Created` | A new resource has been created successfully |
 | `400 Bad Request` | The request was malformed. The response body will include an error providing further information |
+| `403 Forbidden` | Authentication was provided, but the authenticated user is not permitted to perform the requested operation. |
 | `404 Not Found` | The requested resource did not exist |
 | `405 Method Not Allowed` | The requested resource does not support method |
 | `409 Conflict` | The request could not be completed due to a conflict with the current state of the target resource |
@@ -92,7 +93,7 @@ Each restaurant provides new menu each day.
 
 *Create*
 
-    $ curl 'http://localhost:8080/rest/admin/restaurant/' -i -u 'petr@gmail.com:petr_pass' -X POST \
+    $ curl 'http://localhost:8080/rest/restaurant/' -i -u 'petr@gmail.com:petr_pass' -X POST \
         -H 'Content-Type: application/json;charset=UTF-8' \
         -d '{
       "name" : "new_restaurant"
@@ -100,7 +101,7 @@ Each restaurant provides new menu each day.
     
 *Update*
 
-    $ curl 'http://localhost:8080/rest/admin/restaurant/100010' -i -u 'petr@gmail.com:petr_pass' -X PUT \
+    $ curl 'http://localhost:8080/rest/restaurant/100010' -i -u 'petr@gmail.com:petr_pass' -X PUT \
         -H 'Content-Type: application/json;charset=UTF-8' \
         -d '{
       "id" : 100010,
@@ -135,7 +136,7 @@ Each restaurant provides new menu each day.
 
 *Create*
 
-    $ curl 'http://localhost:8080/rest/admin/restaurant/100012/menu' -i -u 'petr@gmail.com:petr_pass' -X POST \
+    $ curl 'http://localhost:8080/rest/restaurant/100012/menu' -i -u 'petr@gmail.com:petr_pass' -X POST \
         -H 'Content-Type: application/json;charset=UTF-8' \
         -d '{
       "id" : 0,
@@ -154,7 +155,7 @@ Each restaurant provides new menu each day.
     
  *Update*
  
-    $ curl 'http://localhost:8080/rest/admin/restaurant/100012/menu' -i -u 'petr@gmail.com:petr_pass' -X PUT \
+    $ curl 'http://localhost:8080/rest/restaurant/100012/menu' -i -u 'petr@gmail.com:petr_pass' -X PUT \
         -H 'Content-Type: application/json;charset=UTF-8' \
         -d '{
       "id" : 100013,
@@ -171,7 +172,7 @@ Each restaurant provides new menu each day.
 
 *Create*
 
-    $ curl 'http://localhost:8080/rest/admin/meal/' -i -u 'petr@gmail.com:petr_pass' -X POST \
+    $ curl 'http://localhost:8080/rest/meal/' -i -u 'petr@gmail.com:petr_pass' -X POST \
         -H 'Content-Type: application/json;charset=UTF-8' \
         -d '{
       "name" : "ананас"
@@ -179,7 +180,7 @@ Each restaurant provides new menu each day.
     
 *Update*
 
-    $ curl 'http://localhost:8080/rest/admin/meal/100004' -i -u 'petr@gmail.com:petr_pass' -X PUT \
+    $ curl 'http://localhost:8080/rest/meal/100004' -i -u 'petr@gmail.com:petr_pass' -X PUT \
         -H 'Content-Type: application/json;charset=UTF-8' \
         -d '{
       "id" : 100004,
@@ -188,15 +189,15 @@ Each restaurant provides new menu each day.
     
 *Delete*
 
-    $ curl 'http://localhost:8080/rest/admin/meal/100004' -i -u 'petr@gmail.com:petr_pass' -X DELETE
+    $ curl 'http://localhost:8080/rest/meal/100004' -i -u 'petr@gmail.com:petr_pass' -X DELETE
     
 *Get*
 
-    $ curl 'http://localhost:8080/rest/admin/meal/100004' -i -u 'petr@gmail.com:petr_pass'
+    $ curl 'http://localhost:8080/rest/meal/100004' -i -u 'petr@gmail.com:petr_pass'
     
 *Get all*
 
-    $ curl 'http://localhost:8080/rest/admin/meal/' -i -u 'petr@gmail.com:petr_pass'
+    $ curl 'http://localhost:8080/rest/meal/' -i -u 'petr@gmail.com:petr_pass'
     
 #### User
 

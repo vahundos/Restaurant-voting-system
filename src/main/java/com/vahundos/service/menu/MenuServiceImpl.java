@@ -21,14 +21,18 @@ import static com.vahundos.util.ValidationUtil.checkNotFoundWithId;
 @Service
 public class MenuServiceImpl implements MenuService {
 
-    @Autowired
-    private CrudMenuRepository menuRepository;
+    private final CrudMenuRepository menuRepository;
+
+    private final CrudRestaurantRepository restaurantRepository;
+
+    private final CrudMealRepository mealRepository;
 
     @Autowired
-    private CrudRestaurantRepository restaurantRepository;
-
-    @Autowired
-    private CrudMealRepository mealRepository;
+    public MenuServiceImpl(CrudMenuRepository menuRepository, CrudRestaurantRepository restaurantRepository, CrudMealRepository mealRepository) {
+        this.menuRepository = menuRepository;
+        this.restaurantRepository = restaurantRepository;
+        this.mealRepository = mealRepository;
+    }
 
     @Override
     @CacheEvict(value = "restaurantsWithMenu", allEntries = true)
